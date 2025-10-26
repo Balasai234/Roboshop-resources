@@ -19,7 +19,7 @@ spec:
   resources:
     requests:
       storage: 20Gi
-  storageClassName: "roboshop-ebs"
+  storageClassName: roboshop-ebs
 ---
 apiVersion: v1
 kind: Service
