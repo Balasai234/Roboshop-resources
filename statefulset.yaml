@@ -89,7 +89,7 @@ spec:
       name: statefulset-storage
     spec:
       accessModes: [ "ReadWriteOnce" ]
-      storageClassName: ebs-roboshop
+      storageClassName: roboshop-ebs
       resources:
         requests:
           storage: 2Gi   
