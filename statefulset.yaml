@@ -63,7 +63,7 @@ metadata:
     app: statefulset-app
     project: roboshop
 spec:
-  serviceName: "statefulset-headless"
+  serviceName: statefulset-headless
   replicas: 3
   selector:
     matchLabels:
