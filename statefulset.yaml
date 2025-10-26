@@ -1,25 +1,10 @@
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: roboshop-ebs
+  name: roboshop-ebs-demo
 provisioner: kubernetes.io/aws-ebs # or another provisioner (e.g. pd.csi.storage.gke.io, kubernetes.io/gce-pd)
 reclaimPolicy: Retain
 volumeBindingMode: WaitForFirstConsumer
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: roboshop-dynamic-claim
-  labels:
-    project: roboshop
-    env: production
-spec:
-  accessModes:
-  - ReadWriteOnce
-  resources:
-    requests:
-      storage: 20Gi
-  storageClassName: roboshop-ebs
 ---
 apiVersion: v1
 kind: Service
@@ -89,7 +74,7 @@ spec:
       name: statefulset-storage
     spec:
       accessModes: [ "ReadWriteOnce" ]
-      storageClassName: roboshop-ebs
+      storageClassName: roboshop-ebs-demo
       resources:
         requests:
           storage: 2Gi   
