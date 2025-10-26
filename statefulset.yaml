@@ -84,7 +84,12 @@ spec:
           volumeMounts:
             - name: statefulset-storage
               mountPath: /usr/share/nginx/html
-      volumes:
-        - name: statefulset-storage
-          persistentVolumeClaim:
-            claimName: roboshop-dynamic-claim
+  volumeClaimTemplates:
+  - metadata:
+      name: statefulset-storage
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: efs-roboshop
+      resources:
+        requests:
+          storage: 2Gi   
